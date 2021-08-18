@@ -23,7 +23,7 @@ function infLooping() {
 // 그런데 2개의 정수를 전달받아 덧셈, 뺄셈, 곱셈, 나눗셈 값을 모두 리턴하고 싶다.
 function operateAll(n1, n2) {
     return {
-        plus: n1 +n2,
+        plus: n1 + n2,
         minus: n1 - n2,
         multi: n1 * n2,
         divide: n1 / n2
