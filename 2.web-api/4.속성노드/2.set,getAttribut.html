@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="user-name" value="김철수">
+
+    <script>
+        const $input = document.getElementById('user-name');
+
+        // console.log($input.attributes.value.value);
+        console.log($input.getAttribute('value'));
+
+        const id = $input.getAttribute('id');
+
+        console.log(id);
+
+        // 속성값 변경
+        $input.setAttribute('value', '박영희');
+
+        $input.setAttribute('id', 'member-name');
+
+        // 속성값 추가
+        $input.setAttribute('title', '이름을 입력하시오~');
+        $input.setAttribute('placeholder', '이름을 한글로');
+
+        // 속성값 삭제
+        $input.removeAttribute('value');
+
+        // 속성 존재 유무 확인
+        if($input.hasAttribute('title')) {
+            alert('타이틀 속성 있음!');
+        }
+    </script>
+</body>
+</html>
