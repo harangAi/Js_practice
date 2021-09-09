@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #common {
+            color: red;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div id="common" style="color: orange;">Hello</div>
+
+    <script>
+        const $cm = document.getElementById('common');
+        console.log($cm.style.color);
+        $cm.style.color = 'blue';
+        $cm.style.fontWeight = 'bold';
+    </script>
+</body>
+</html>
