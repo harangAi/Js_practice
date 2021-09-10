@@ -1,3 +1,4 @@
+//==================================== 전역변수 선언부 =============================================
 
 // 게임에 필요한 데이터 객체
 const gameDatas = {
@@ -6,7 +7,7 @@ const gameDatas = {
     max: 100
 };
 
-// 함수 정의부
+//==================================== 함수 정의부 =================================================
 
 // 기존 아이콘 전체삭제 함수
 function clearAllIcons($numbers) {
@@ -16,27 +17,15 @@ function clearAllIcons($numbers) {
 }
 
 // 숫자 아이콘 생성 함수
-function makeNumberIcons(isClear=false) {
-
+function makeIcons() {
     const $numbers = document.getElementById('numbers');
-
-    if (isClear) {
-        clearAllIcons($numbers);
-    } 
-
-    
-
-    // 가상의 DOM만들기
-    const $frag = document.createDocumentFragment();
-    
-    // 아이콘 i개 만들기
-    for (let i = gameDatas.min; i <= gameDatas.max; i++) {
-        const $icon = document.createElement('div');
-        $icon.classList.add('icon');
-        $icon.textContent = i;
-        $frag.appendChild($icon);
+    // 아이콘 n개 만들기
+    for(let i=gameDatas.min; i <= gameDatas.max; i++){
+        const $div = document.createElement('div');
+        $div.classList.add('icon');
+        $div.textContent = i;
+        $numbers.appendChild($div);
     }
-    $numbers.appendChild($frag);
 }
 
 // updown 애니메이션 클래서 처리 함수
@@ -102,7 +91,7 @@ function checkAnswer($target) {
     }
 }
 
-// 메인 실행부
+//==================================== 메인 실행부 =================================================
 (function() {
 
     // 아이콘 배치 함수 호출
