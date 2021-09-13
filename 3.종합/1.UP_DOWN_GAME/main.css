@@ -1,3 +1,5 @@
+
+
 /* reset */
 a {
     color: inherit;
@@ -61,10 +63,6 @@ section.main .number-wrapper h2 em {
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     row-gap: 20px;
-    /*
-    display: flex;
-    flex-wrap: wrap;
-    */
 }
 
 #numbers .icon {
@@ -79,10 +77,6 @@ section.main .number-wrapper h2 em {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /*
-    width:20%;
-    margin-right:5%;
-    */
 }
 
 #numbers .icon:hover {

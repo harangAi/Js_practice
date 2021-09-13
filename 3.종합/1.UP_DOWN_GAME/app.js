@@ -1,13 +1,11 @@
-//==================================== 전역변수 선언부 =============================================
-
-// 게임에 필요한 데이터 객체
+//========================================= 전역변수 선언부 ==========================================
 const gameDatas = {
     secret: Math.floor(Math.random() * 100) + 1,
     min: 1,
     max: 100
 };
 
-//==================================== 함수 정의부 =================================================
+//========================================= 함수 정의부 ==============================================
 
 // 기존 아이콘 전체삭제 함수
 function clearAllIcons($numbers) {
@@ -17,15 +15,19 @@ function clearAllIcons($numbers) {
 }
 
 // 숫자 아이콘 생성 함수
-function makeIcons() {
+function makeNumberIcons(isClear=false) {
     const $numbers = document.getElementById('numbers');
-    // 아이콘 n개 만들기
-    for(let i=gameDatas.min; i <= gameDatas.max; i++){
-        const $div = document.createElement('div');
-        $div.classList.add('icon');
-        $div.textContent = i;
-        $numbers.appendChild($div);
+    if (isClear) {
+        clearAllIcons($numbers);
     }
+    const $frag = document.createDocumentFragment();
+    for (let i = gameDatas.min; i <= gameDatas.max; i++) {
+        const $icon = document.createElement('div');
+        $icon.classList.add('icon');
+        $icon.textContent = i;
+        $frag.appendChild($icon);
+    }
+    $numbers.appendChild($frag);
 }
 
 // updown 애니메이션 클래서 처리 함수
@@ -42,14 +44,6 @@ function executeUpDownAnimation(isUp) {
 
 }
 
-/*
-function processUpCase() {
-    gameDatas.max = gameDatas.answer + 1;
-    document.getElementById('begin').textContent = gameDatas.min;
-    makeNumberIcons(true);
-}
-*/
-
 // UpDown인 경우 처리할 내용을 정의하는 함수
 function processUpDownCase(isUp) {
 
@@ -60,27 +54,22 @@ function processUpDownCase(isUp) {
     else {
         // 최대값 갱신
         gameDatas.max = gameDatas.answer - 1;
-        // html에 숫자텍스트 #end에 최대값 넣기
         document.getElementById('end').textContent = gameDatas.max;
     }
-    // updown아이콘 애니메이션 처리
     executeUpDownAnimation(isUp);
-    // 아이콘 갱신
     makeNumberIcons(true);
 }
 
 // 정답을 맞췄을 때 처리함수
 function processCorrect($target) {
-    // 축하박스 애니메이션 처리
     const $finish = document.getElementById('finish');
     $finish.classList.add('show');
-
     $target.setAttribute('id', 'move');
 }
 
 // 클릭된 숫자를 판별해 결과를 알려주는 함수
 function checkAnswer($target) {
-    const {secret, answer} = gameDatas;
+    const {secret, answer} = gameDatas; //객체 디스트럭쳐링(ES6+)
 
     if (secret === answer) { // 정답인 경우
         processCorrect($target);
@@ -91,7 +80,7 @@ function checkAnswer($target) {
     }
 }
 
-//==================================== 메인 실행부 =================================================
+//========================================= 메인 실행부 ==============================================
 (function() {
 
     // 아이콘 배치 함수 호출
@@ -101,13 +90,8 @@ function checkAnswer($target) {
     const $numbers = document.getElementById('numbers');
     $numbers.addEventListener('click', e => {
 
-        // 클릭이벤트 아이콘으로 제한
         if (!e.target.matches('#numbers .icon')) return;
-
-        // console.log(e.target.textContent);
-        gameDatas.answer = +e.target.textContent;
-        // console.log(gameDatas);
-        
+        gameDatas.answer = +e.target.textContent; //+로 정수(Integer) 처리
         // 정답 체크 함수 호출
         checkAnswer(e.target);
     });
