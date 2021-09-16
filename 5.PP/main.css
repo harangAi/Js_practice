@@ -60,6 +60,11 @@ html, body{
     -moz-appearance: none; 
     appearance: none;
   }
+
+  .input-box::placeholder {
+    color: #ddaf35;
+  }
+
   .input-data{
     cursor: pointer;
     font-size: 10px;

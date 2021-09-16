@@ -1,7 +1,3 @@
-function showMain(){
-    mainTodayDay.innerHTML = dayList[today.getDay()];
-    mainTodayDate.innerHTML = today.getDate();
-}
 var clickedDate1 = document.getElementById(today.getDate());
 clickedDate1.classList.add('active');
 var prevBtn = document.getElementById('prev');
@@ -15,6 +11,9 @@ function clickStart(){
         tdGroup[i].addEventListener('click',changeToday);
     }
 }
+
+clickStart();
+
 function changeToday(e){
     for(let i = 1; i <= pageYear[first.getMonth()]; i++){
         if(tdGroup[i].classList.contains('active')){

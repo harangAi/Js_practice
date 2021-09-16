@@ -1,3 +1,18 @@
+function isValidate() {
+  const $textInput = document.getElementById('input-box');
+  if ($textInput.value.trim() !== '') {
+    $textInput.textContent = '';
+    $textInput.style.background = '';
+    $textInput.setAttribute('placeholder', '오늘의 할일을 기록하세요!!');
+    return true;
+  }
+  else {
+    $textInput.setAttribute('placeholder', '필수 입력 사항입니다.');
+    $textInput.textContent = '';
+    return false;
+  }
+}
+
 function reshowingList(){
     keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
     if(todoList[keyValue] === undefined){
@@ -48,6 +63,7 @@ function reshowingList(){
             function deleteTodo(){
                 $div.remove();
                 $btn.remove();
+                todoList[keyValue].shift();
             }
         }
     }
@@ -57,7 +73,11 @@ var inputBox = document.getElementById('input-box');
 var inputDate = document.getElementById('input-data');
 var inputList = document.getElementById('input-list');
 var delText = 'X';
-inputDate.addEventListener('click',addTodoList);
+inputDate.addEventListener('click', e => {
+  if(isValidate()){
+    addTodoList();
+  }
+}); 
 var dataCnt = 1;
 var keyValue = today.getFullYear() + '' + today.getMonth()+ '' + today.getDate();
 let todoList = [];
@@ -81,6 +101,7 @@ function addTodoList(){
     function deleteTodo(){
         $div.remove();
         $btn.remove();
+        todoList[keyValue].shift();
     }
 }
 console.log(keyValue);

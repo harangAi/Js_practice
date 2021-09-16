@@ -37,8 +37,15 @@ function showCalendar(){
         monthCnt++;
         calendarBody.appendChild($tr);
     }
+    showMain();
 }
 showCalendar();
+
+function showMain(){
+    mainTodayDay.innerHTML = dayList[today.getDay()];
+    mainTodayDate.innerHTML = today.getDate();
+    currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;'+ first.getFullYear();
+}
 
 function removeCalendar(){
     let catchTr = 100;
